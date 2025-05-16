@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:supportsRtl="true"
+        android:icon="@drawable/icon_reproductor"
+        android:label="PlaySound"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <activity 
+            android:name="com.juanpablogarzon.reproductor_movil.App"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity 
+            android:name="com.juanpablogarzon.reproductor_movil.Reproductor"
+            android:exported="true"/>
+
+        <activity 
+            android:name="com.juanpablogarzon.reproductor_movil.Lists"
+            android:exported="true"/>
+
+        <activity 
+            android:name="com.juanpablogarzon.reproductor_movil.List"
+            android:exported="true"/>
+
+        <activity 
+            android:name="com.juanpablogarzon.reproductor_movil.Search"
+            android:exported="true"/>
+
+        <activity 
+            android:name="com.juanpablogarzon.reproductor_movil.Artist"
+            android:exported="true"/>
+
+        <activity 
+            android:name="com.juanpablogarzon.reproductor_movil.Album"
+            android:exported="true"/>
+
+    </application>
+
+</manifest>
