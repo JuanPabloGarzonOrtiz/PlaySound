@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutPrincipal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#131313">
+    <FrameLayout 
+        android:id="@+id/Layoutinterno"
+        android:layout_width="match_parent"
+        android:layout_height="540dp"
+        android:gravity="center_horizontal">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/input_button"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp"
+                        android:text="Buscar.."
+                        android:background="#262424"
+                        android:textColor="#7c7777"
+                        android:clickable="true"
+                        android:focusable="true"/>
+                    <GridLayout
+                        android:id="@+id/gridLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:columnCount="2"
+                        android:padding="2dp"
+                        android:layout_margin="2dp"
+                        android:orientation="horizontal">
+                        <!-- Listas de ReProduccion-->
+                    </GridLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </ScrollView>
+        <!-- Boton de Crear Listas-->
+        <ImageButton
+            android:id="@+id/btnCreateList"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/ic_create_list"/>
+    </FrameLayout>
+    <!--Menu de Navegacion-->
+</LinearLayout>

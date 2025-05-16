@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    plugins {
+        id 'com.android.application' version '8.7.3' // Usa la versión compatible con Gradle 8.12
+    }
+}
+
+rootProject.name = 'reproductor_movil'
