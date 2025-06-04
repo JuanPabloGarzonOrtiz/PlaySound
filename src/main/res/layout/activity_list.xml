@@ -55,8 +55,7 @@
                         android:textColor="@android:color/white"/>
                 </LinearLayout>
             </FrameLayout>
-            <!-- Aqui se ubican las cacniones de la Lista-->
+            <!-- Aqui se ubican las canciones de la Lista-->
         </LinearLayout>
-
     </ScrollView>
 </LinearLayout>

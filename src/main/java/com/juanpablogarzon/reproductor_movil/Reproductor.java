@@ -354,10 +354,13 @@ public class Reproductor extends Activity implements MediaPlayer.OnCompletionLis
         info_Canciones = MetodosCompartidos.consult_DB_Android(this);
         JSONObject jsonData = null;
         try{
-            jsonData = new JSONObject(MetodosCompartidos.leerJson(this, showLog_Initial));
-            Log.e("DEBUG","Este el valor impreso" + jsonData.toString());
-            showLog_Initial = (showLog_Initial.equals(true)) ? false: true;
-            num_songJSON = Integer.parseInt(jsonData.getString("NUM_SONG").replaceAll("[^\\p{Print}]", ""));
+            String resultRead = MetodosCompartidos.leerJson(this, showLog_Initial);
+            if (resultRead != null){
+                jsonData = new JSONObject(resultRead);
+                Log.e("DEBUG","Este el valor impreso" + jsonData.toString());
+                showLog_Initial = (showLog_Initial.equals(true)) ? false: true;
+                num_songJSON = Integer.parseInt(jsonData.getString("NUM_SONG").replaceAll("[^\\p{Print}]", ""));
+            }
         }catch(JSONException e){ 
             e.printStackTrace();
             Log.e("DEBUG","Error en la asignacion del valor sacado del JSON");

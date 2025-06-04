@@ -28,7 +28,7 @@
                     android:layout_height="300dp"
                     android:background="#80000000"/>
 
-                <LinearLayout
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:orientation="horizontal"
@@ -52,7 +52,7 @@
                         android:textSize="25sp"
                         android:textStyle="bold"
                         android:textColor="@android:color/white"/>
-                </LinearLayout>
+                </FrameLayout>
             </FrameLayout>
             <LinearLayout
                 android:layout_width="match_parent"
