@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.View;
 
 import android.util.Log;
 
@@ -25,6 +26,8 @@ public class List extends Activity{
 
         if (!name_List.equals("Me Gusta")){
             LinearLayout layout = findViewById(getResources().getIdentifier("layoutTop", "id", getPackageName()));
+            View view1 = (View) MetodosCompartidos.configuracion_XML_Elemento(this, "view", "", "");
+            layout.addView(view1);
             ImageButton btn_delete = (ImageButton) MetodosCompartidos.configuracion_XML_Elemento(this, "imgButton", "@drawable/ic_delete", "layout_List");
             layout.addView(btn_delete);
             btn_delete.setOnClickListener(v -> {

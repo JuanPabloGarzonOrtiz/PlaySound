@@ -19,4 +19,4 @@ CREATE TABLE historial_canciones(
 );
 INSERT INTO listas (nombre) 
 	VALUES 
-		('Me Gusta'); 
+		('Me Gusta');

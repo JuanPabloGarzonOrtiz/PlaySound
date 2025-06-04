@@ -9,11 +9,12 @@
     <FrameLayout 
         android:id="@+id/Layoutinterno"
         android:layout_width="match_parent"
-        android:layout_height="540dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center_horizontal">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
             <FrameLayout 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -25,7 +26,7 @@
                     android:orientation="vertical">
                     <TextView
                         android:id="@+id/input_button"
-                        android:layout_width="300dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:textSize="20sp"

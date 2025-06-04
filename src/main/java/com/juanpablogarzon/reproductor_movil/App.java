@@ -39,7 +39,10 @@ public class App extends Activity {
         //Permisos
         ActivityCompat.requestPermissions(this, new String[]{
             Manifest.permission.READ_MEDIA_IMAGES,
-            Manifest.permission.READ_MEDIA_AUDIO
+            Manifest.permission.READ_MEDIA_AUDIO, //Permisos de Android Posterior al 13
+            
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE //Permisos de Android Anterior al 12
         }, 1);
 
         info_Canciones = MetodosCompartidos.consult_DB_Android(this);

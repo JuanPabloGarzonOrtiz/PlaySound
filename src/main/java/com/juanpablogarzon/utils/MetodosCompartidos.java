@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.graphics.Typeface;
 import android.view.Gravity;
+import android.util.TypedValue;
 
 import android.content.Context;
 import android.app.Activity;
@@ -80,12 +81,21 @@ public class MetodosCompartidos{
         return null;
     }
 
+    // Método para convertir dp a px
+    public static int dpToPx(Context context, int dp) {
+        return (int) TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp,
+            context.getResources().getDisplayMetrics()
+        );
+    }
+
     public static Object configuracion_XML_Elemento(Context context, String typeElement ,String data, String subType){
         switch (typeElement){
             case "textButton":
                 Button buton = new Button(context);
                 buton.setText(data);
-                LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(120, 50);
+                LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 switch (subType) {
                     case "btn_Normal":
                         parms = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 40);
@@ -112,8 +122,6 @@ public class MetodosCompartidos{
                         break;
                     case "layout_Lists":
                         button.setBackgroundColor(Color.parseColor("#a9aaab"));
-                        button.setPadding(5,5,5,5);
-                        button.setLayoutParams((new LinearLayout.LayoutParams(150, 150)));
                         params = new LinearLayout.LayoutParams(150, 150);
                         params.setMargins(3, 3, 3, 3);
                         button.setLayoutParams(params);
@@ -126,7 +134,8 @@ public class MetodosCompartidos{
                         button.setScaleType(ImageView.ScaleType.FIT_CENTER);
                         break;
                     case "layout_List":
-                        params = new LinearLayout.LayoutParams(40, 40);
+                        int size = dpToPx(context,50);
+                        params = new LinearLayout.LayoutParams(size, size);
                         params.gravity = Gravity.TOP; 
                         button.setLayoutParams(params);
                         button.setPadding(0, 0, 10, 0);
@@ -217,17 +226,22 @@ public class MetodosCompartidos{
     public static String leerJson(Context context, Boolean showLog ){
         try{
             File file = context.getFileStreamPath("json_keepData");
-            FileInputStream refFile = context.openFileInput("json_keepData");
-            StringBuilder jsonData = new StringBuilder();
-            int Char;
-            while ((Char = refFile.read()) != -1) {
-                jsonData.append((char) Char);
+            if (file.exists()){
+                Log.e("DEBUG","Si existe el archivo Json");
+                FileInputStream refFile = context.openFileInput("json_keepData");
+                StringBuilder jsonData = new StringBuilder();
+                int Char;
+                while ((Char = refFile.read()) != -1) {
+                    jsonData.append((char) Char);
+                }
+                if(showLog){
+                    Log.d("DEBUG", "Datos leidos en JSON: " + jsonData.toString());
+                }
+                refFile.close();
+                return jsonData.toString();
             }
-            if(showLog){
-                Log.d("DEBUG", "Datos leidos en JSON: " + jsonData.toString());
-            }
-            refFile.close();
-            return jsonData.toString();
+            Log.e("DEBUG","Se va a devolver null");
+            return null;
         }catch(IOException e){
             e.printStackTrace();
             Log.e("DEBUG", "Error al extreer datos en JSON: " + e.getMessage());

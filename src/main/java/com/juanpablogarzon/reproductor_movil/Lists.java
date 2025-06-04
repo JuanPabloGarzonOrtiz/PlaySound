@@ -15,6 +15,10 @@ import android.view.Gravity;
 import android.view.View;
 import java.io.File;
 
+import android.content.res.Resources;
+import android.view.ViewGroup;
+
+
 
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
@@ -40,9 +44,11 @@ public class Lists extends Activity {
         btn_CreateList.setOnClickListener(v ->{
             FrameLayout layout = findViewById(getResources().getIdentifier("Layoutinterno", "id", getPackageName()));
             LinearLayout layout_Create = new LinearLayout(this);
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(250, 150);
+            int size = ViewGroup.LayoutParams.WRAP_CONTENT; // Ancho de Pantalla de Dispositivo
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(size, size);
             params.gravity = Gravity.CENTER;
             layout_Create.setLayoutParams(params);
+            layout_Create.setPadding(10,10,10,10);
             layout_Create.setOrientation(LinearLayout.VERTICAL);
             layout_Create.setBackgroundColor(Color.parseColor("#F0000000"));
 
@@ -73,6 +79,12 @@ public class Lists extends Activity {
                 }
                 MetodosCompartidos.openActivity(this, Lists.class, -1); 
             });
+        });
+
+        //Barra de Busqueda
+        TextView btn_Bar = findViewById(getResources().getIdentifier("input_button","id", getPackageName()));
+        btn_Bar.setOnClickListener(v->{
+            MetodosCompartidos.openActivity(this, Search.class, false);
         });
 
 
