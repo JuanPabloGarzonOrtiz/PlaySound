@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.widget.SeekBar;
 
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 import org.json.JSONObject;
@@ -47,6 +48,14 @@ public class Reproductor extends Activity implements MediaPlayer.OnCompletionLis
         setContentView(idXML);
         MetodosCompartidos.navigation_Bar(this);
         extract_infoSong();
+
+        //Asignacion de Tamaño de Caratula
+        int screenWidth = (getResources().getDisplayMetrics().widthPixels) - 30 ;
+        ImageView caratula = findViewById(getResources().getIdentifier("img_Song", "id", getPackageName()));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(screenWidth, screenWidth);
+        params.gravity = Gravity.CENTER;
+        params.setMargins(0,20,0,0);
+        caratula.setLayoutParams(params);
 
         //Reproduccion de Cancion con Argumento
         Intent intent = getIntent();
@@ -201,7 +210,8 @@ public class Reproductor extends Activity implements MediaPlayer.OnCompletionLis
 
                         //Seccion Desplizable
                         LinearLayout layout_Options = new LinearLayout(this);
-                        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 150);
+                        int heigth = getResources().getDisplayMetrics().heightPixels;
+                        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, heigth / 4);
                         params.gravity = Gravity.BOTTOM;
                         layout_Options.setLayoutParams(params);
                         layout_Options.setOrientation(LinearLayout.VERTICAL);
@@ -281,7 +291,8 @@ public class Reproductor extends Activity implements MediaPlayer.OnCompletionLis
     }
     private LinearLayout addANDdelSong(String type){
         LinearLayout layout_Create = new LinearLayout(this);
-        FrameLayout.LayoutParams parms = new FrameLayout.LayoutParams(250, 150);
+        int width = getResources().getDisplayMetrics().widthPixels;
+        FrameLayout.LayoutParams parms = new FrameLayout.LayoutParams(width -50, width /2);
         parms.gravity = Gravity.CENTER;
         layout_Create.setLayoutParams(parms);
         layout_Create.setOrientation(LinearLayout.VERTICAL);

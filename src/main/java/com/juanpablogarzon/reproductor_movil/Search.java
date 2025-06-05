@@ -26,6 +26,9 @@ public class Search extends Activity{
                 LinearLayout layout_Canciones = (findViewById(getResources().getIdentifier("layout_Songs", "id", getPackageName())));
                 layout_Canciones.removeAllViews();
                 MetodosCompartidos.vistaCompartida(Search.this, 0, string.toString());
+                /*Thread hilo = new Thread(() -> {
+                });
+                hilo.start();*/
             }
             @Override
             public void afterTextChanged(Editable string) {}// Acción después de que el texto cambie

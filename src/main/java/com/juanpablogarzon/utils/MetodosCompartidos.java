@@ -95,10 +95,9 @@ public class MetodosCompartidos{
             case "textButton":
                 Button buton = new Button(context);
                 buton.setText(data);
-                LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 switch (subType) {
                     case "btn_Normal":
-                        parms = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 40);
                         buton.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
                         buton.setBackground(null);
                         break;
@@ -113,21 +112,26 @@ public class MetodosCompartidos{
                 button.setBackground(null);
                 button.setImageBitmap(asignacion_Imagen(context, data));
                 button.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                int size_Caratula = context.getResources().getDisplayMetrics().widthPixels;
                 switch (subType) {
                     case "layout_main":
-                        button.setLayoutParams(new LinearLayout.LayoutParams(145, 145));
+                        size_Caratula = size_Caratula/ 3;
+                        button.setLayoutParams(new LinearLayout.LayoutParams(size_Caratula, size_Caratula));
                         break;
                     case "layout_Artist_IMG":
-                        button.setLayoutParams(new LinearLayout.LayoutParams(70, 70));
+                        size_Caratula = size_Caratula/ 5;
+                        button.setLayoutParams(new LinearLayout.LayoutParams(size_Caratula, size_Caratula));
                         break;
                     case "layout_Lists":
                         button.setBackgroundColor(Color.parseColor("#a9aaab"));
-                        params = new LinearLayout.LayoutParams(150, 150);
+                        size_Caratula = (size_Caratula/ 2 ) - 10;
+                        params = new LinearLayout.LayoutParams(size_Caratula, size_Caratula);
                         params.setMargins(3, 3, 3, 3);
                         button.setLayoutParams(params);
                         break;
                     case "layout_Artist_BTN":
-                        params = new LinearLayout.LayoutParams(55, 55);
+                        size_Caratula = size_Caratula / 8;
+                        params = new LinearLayout.LayoutParams(size_Caratula, size_Caratula);
                         params.gravity = Gravity.END; 
                         button.setLayoutParams(params);
                         button.setPadding(0, 15, 0, 0);
@@ -252,7 +256,7 @@ public class MetodosCompartidos{
     public static void vistaCompartida(Context context, int id_dato_Asignado, String TextViewPrincipal){
         //Asignacion de Argumentos Recibidos
         Cursor info_Canciones = consult_DB_Android(context);
-        String nombre_Principal = "";
+        String nombre_Principal = ""; //Nombre de Cancion o Album
         Intent intent = ((Activity) context).getIntent();
         String name_List = "";
         SQLiteDatabase db = conectDB(context);
@@ -289,7 +293,8 @@ public class MetodosCompartidos{
 
             info_Canciones.moveToFirst(); 
             do{
-                if (nombre_Principal.equals(info_Canciones.getString(id_dato_Asignado))){
+                if (nombre_Principal.equals(info_Canciones.getString(id_dato_Asignado))){ // Nombre de Cancion o Album es igual a la de la Cancion Iterada
+                    list_IDs_Song.add(info_Canciones.getPosition()); //Insertar en la lista el id de Cancion
                     impresion = true;
                 }else if((info_Canciones.getString(0).toLowerCase()).contains(TextViewPrincipal.toLowerCase()) && !TextViewPrincipal.isEmpty()){
                     impresion = true;
@@ -301,7 +306,8 @@ public class MetodosCompartidos{
                             break;
                         }
                     }while(cursor.moveToNext());
-                }
+                }                    
+
                 if (impresion){
                     LinearLayout layout_cancion = new LinearLayout(context);
                     LinearLayout layout_Data_cacion = new LinearLayout(context);

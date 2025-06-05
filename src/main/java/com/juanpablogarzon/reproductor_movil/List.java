@@ -4,6 +4,7 @@ import com.juanpablogarzon.reproductor_movil.utils.MetodosCompartidos;
 import android.app.Activity;
 import android.widget.LinearLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.content.Intent;
